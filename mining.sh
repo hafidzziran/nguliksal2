@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Konfigurasi mining ke xmrig-proxy lokal
-POOL="138.197.153.9:443"  # Jangan ke IP pool langsung!
+POOL="127.0.0.1:1230"  # Jangan ke IP pool langsung!
 WALLET="4jam"          # Ini hanya nama worker di proxy
 WORKER="codespace"     # Nama instance, bisa diganti
 CPU_THREADS=3
