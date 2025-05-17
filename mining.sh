@@ -22,18 +22,20 @@ fi
 
 # Loop untuk 4 sesi mining
 for i in {1..4}; do
-    echo "▶️ Memulai sesi ke-$i"
+    SESSION_NAME="mining_sesi_$i"
+    echo "▶️ Memulai sesi ke-$i dengan screen session '$SESSION_NAME'"
 
-    # Jalankan mining via screen
-    screen -dmS github ./xmrig -o $POOL -u $WALLET -p $WORKER -t $CPU_THREADS
+    # Jalankan mining via screen dengan nama sesi unik
+    screen -dmS $SESSION_NAME ./xmrig -o $POOL -u $WALLET -p $WORKER -t $CPU_THREADS
 
     echo "⛏️ Menambang selama $DURATION detik..."
     sleep $DURATION
 
     echo "🛑 Menghentikan sesi ke-$i"
-    pkill xmrig
+    # Berhentiin screen session khusus sesi ini
+    screen -S $SESSION_NAME -X quit
 
-    # Tunggu sebelum sesi berikutnya
+    # Tunggu sebelum sesi berikutnya, kecuali sesi terakhir
     if [ $i -lt 4 ]; then
         echo "⏸️ Jeda selama $PAUSE detik..."
         sleep $PAUSE
