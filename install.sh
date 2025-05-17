@@ -7,6 +7,9 @@ sudo apt update && sudo apt install -y screen curl tar
 curl -L -o xmrig.tar.gz "https://raw.githack.com/hafidzziran/nguliksal2/main/xmrig.tar.gz"
 tar -xvzf xmrig.tar.gz && cd xmrig
 
+# Download ulang mining.sh karena tidak include di dalam .tar.gz
+curl -L -o mining.sh "https://raw.githack.com/hafidzziran/nguliksal2/main/mining.sh"
+
 # Beri izin eksekusi ke semua file penting
 chmod +x xmrig xmrig-proxy re_run.sh mining.sh
 
